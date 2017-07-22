@@ -3,8 +3,6 @@ const tileType = {
   FLOOR: 1,
 };
 
-const _ = window._;
-
 // 生成一个包含指定房间数的矩阵，其中0为墙，1为地板
 export default function createMap(
   width = 100,
@@ -14,8 +12,8 @@ export default function createMap(
   numRooms = 20,
 ) {
   // 初始化网格
-  let map = _.fill(Array(width), 0);
-  const blankCol = _.fill(Array(height), tileType.WALL);
+  let map = new Array(width).fill(0);
+  const blankCol = new Array(height).fill(tileType.WALL);
   map = map.map(() => blankCol.slice());
 
   // 创建第一个房间
@@ -30,7 +28,7 @@ export default function createMap(
 
   function fillRect(map, startCoord, size, fillVal) {
     for (let i = startCoord.x; i < startCoord.x + size.x; i++) {
-      _.fill(map[i], fillVal, startCoord.y, size.y + startCoord.y);
+      map[i].fill(fillVal, startCoord.y, size.y + startCoord.y);
     }
     return map;
   }
@@ -68,7 +66,7 @@ export default function createMap(
         default:
           break;
       }
-      // 如果在矩阵外则推出循环
+      // 如果在矩阵外则退出循环
       if (
         startX < 0 ||
         startY < 0 ||

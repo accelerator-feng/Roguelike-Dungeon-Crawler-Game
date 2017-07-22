@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 .WALL {
     background-color: gray;
 }
@@ -89,7 +88,7 @@ h4 {
     border-color: black;
     padding: 5px 15px;
 
-    font-family: Roboto;
+    font-family: Verdana;
 }
 
 .label {

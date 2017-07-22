@@ -1,5 +1,3 @@
-const _ = window._;
-
 const initialState = {
   entities: {
     player: {
@@ -61,17 +59,16 @@ export default (state = initialState, action) => {
         },
       };
     case 'MOVE':
+      delete state.occupiedSpaces[
+        `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`
+      ];
+      state.occupiedSpaces[
+        `${state.entities[action.entityName].x + action.vector.x}x${state.entities[action.entityName].y + action.vector.y}`
+      ] =
+        action.entityName;
       return {
         ...state,
-        occupiedSpaces: _.chain(state.occupiedSpaces)
-          .omit(
-            `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`,
-          )
-          .set(
-            `${state.entities[action.entityName].x + action.vector.x}x${state.entities[action.entityName].y + action.vector.y}`,
-            action.entityName,
-          )
-          .value(),
+        occupiedSpaces: state.occupiedSpaces,
         entities: {
           ...state.entities,
           [action.entityName]: {
@@ -82,14 +79,14 @@ export default (state = initialState, action) => {
         },
       };
     case 'SET_LOCATION':
+      delete state.occupiedSpaces[
+        `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`
+      ];
+      state.occupiedSpaces[`${action.location.x}x${action.location.y}`] =
+        action.entityName;
       return {
         ...state,
-        occupiedSpaces: _.chain(state.occupiedSpaces)
-          .omit(
-            `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`,
-          )
-          .set(`${action.location.x}x${action.location.y}`, action.entityName)
-          .value(),
+        occupiedSpaces: state.occupiedSpaces,
         entities: {
           ...state.entities,
           [action.entityName]: {
@@ -118,14 +115,14 @@ export default (state = initialState, action) => {
         },
       };
     case 'REMOVE_ENTITY':
+      delete state.occupiedSpaces[
+        `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`
+      ];
+      delete state.entities[action.entityName];
       return {
         ...state,
-        occupiedSpaces: _.chain(state.occupiedSpaces)
-          .omit(
-            `${state.entities[action.entityName].x}x${state.entities[action.entityName].y}`,
-          )
-          .value(),
-        entities: _.chain(state.entities).omit(action.entityName).value(),
+        occupiedSpaces: state.occupiedSpaces,
+        entities: state.entities,
       };
     case 'RESET_BOARD':
       return {

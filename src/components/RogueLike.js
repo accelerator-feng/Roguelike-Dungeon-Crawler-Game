@@ -310,14 +310,14 @@ export default class RogueLike extends React.Component {
       newCoords.y < map[0].length &&
       map[newCoords.x][newCoords.y] !== tileType.WALL
     ) {
-      // Tile is not a wall, determine if it contains an entity
+      // 如果没碰到墙，判断是否有东西
       const entityName = state.occupiedSpaces[newCoords.x + 'x' + newCoords.y];
-      // move and return if empty
+      // 如果是空的直接走上去
       if (!entityName) {
         move('player', vector);
         return;
       }
-      // handle encounters with entities
+      // 对碰到的东西进行处理
       const entity = state.entities[entityName];
       switch (entity.entityType) {
         case 'weapon':
