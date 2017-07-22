@@ -1,0 +1,110 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+.WALL {
+    background-color: gray;
+}
+
+.FLOOR {
+    background-color: white;
+}
+
+.player {
+    color: blue;
+    background-color: blue;
+}
+
+.enemy {
+    background-color: red;
+}
+
+.weapon {
+    background-color: orange;
+}
+
+.health {
+    background-color: green;
+}
+
+.exit {
+    background-color: purple;
+}
+
+.tile {
+    display: inline-block;
+
+    width: .75em;
+
+    letter-spacing: 7px;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -khtml-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.dark {
+    color: black;
+    background-color: black;
+}
+
+.boardRow,
+.tile {
+    margin: 0;
+    border-width: 0;
+    border-style: solid;
+    border-color: black;
+    padding: 0;
+    height: .75em;
+}
+
+body {
+    font-family: Palatino, "Palatino Linotype", Georgia;
+
+    color: white;
+    background-color: black;
+}
+
+h1,
+h4 {
+    text-align: center;
+}
+
+h4 {
+    margin-top: -1em;
+}
+
+#ui {
+    padding-left: 10px;
+}
+
+#ui li {
+    float: left;
+
+    list-style: none;
+
+    border-width: 1px;
+    border-style: none;
+    border-color: black;
+    padding: 5px 15px;
+
+    font-family: Roboto;
+}
+
+.label {
+    font-weight: 700;
+}
+
+button {
+    float: right;
+
+    margin-right: 8%;
+    padding: 5px;
+}
+
+#board {
+    clear: both;
+
+    padding-top: 10px;
+}
